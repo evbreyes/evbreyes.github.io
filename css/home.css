@@ -27,8 +27,6 @@
 }
 
 /*flex containers*/
-header,
-header .mainNav,
 .contentWrapper,
 .aboutMe,
 .project,
@@ -51,19 +49,80 @@ header {
 
 /*logo flex item*/
 #logo img {
+    display: block;
     width: 4em;
     flex: 0 1 15em;
     padding: 0.5em 0 0.5em 1.5em;
 }
 
+/*start nav*/
+.topNav {
+    background-color: #6396D8;
+    position: relative;
+
+}
+
+#close {
+    display: none;
+}
+
+#menu {
+    position: absolute;
+    top: -4.25em;
+    right: 1em;
+    font-weight: bold;
+    padding: 1em;
+    background: #6396D8;
+    border-radius: 1em;
+    border: outset 0.125em #D98594;
+    display: block;
+    transform: none;
+
+}
+
+#menu:hover {
+    border: inset #D98594;
+    background-color: #1F2B5F;
+    color: #D98594;
+    transition: ease 0.125s;
+    cursor: pointer;
+}
+
+.topNav #myLinks {
+    display: none;
+    transition: ease 0.5s;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: left;
+}
+
+
+.topNav a {
+    display: block;
+    width: 100%;
+    background: #6396D8;
+    padding: 3em 7em;
+    text-decoration: none;
+}
+
+.topNav a:hover {
+    background-color: #1F2B5F;
+    color: #D98594;
+}
+
+.current {
+    background: #1F2B5F;
+    color: #FECD71;
+}
 /*reminder to work on menu after re-learning jquery*/
 
 main > .aboutMe {
     background: linear-gradient(150deg, #D98594, #D98594 ,#6396D8);
     padding: 2em;
-    margin: 2em;
-    border-radius: 1.4em;
-    box-shadow: 0.25em 0.25em 0.25em 0 #7A5C9C;
+    padding-top: 10em;
+    margin: -7em auto 1em;
+    box-shadow: 2em 1em 0.25em 0 #7A5C9C;
 }
 
 .aboutMe > h1,
@@ -121,6 +180,23 @@ img {
     background: linear-gradient(-150deg, #6396D8, #6396D8, #D98594);
 }
 
+.project > h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding-bottom: 0.25em;
+}
+
+.project > h4 {
+    font-weight: bold;
+    font-size: 1.125em;
+    padding-bottom: 1em;
+}
+
+.project > p {
+    padding-bottom: 1.5em;
+}
+
+
 .connect {
     background: linear-gradient(#D98594, #D98594 ,#6396D8);
     padding-bottom: 3em;
@@ -164,7 +240,7 @@ footer img {
 .socialMedia {
     justify-content: space-around;
     align-items: center;
-    margin: 0 4em;
+    margin: 0 3%;
 }
 
 .socialMedia > a {

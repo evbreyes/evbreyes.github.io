@@ -22,8 +22,10 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <!--This links the page to the reset.css file-->
 
+
     <link rel="stylesheet" type="text/css" href="css/home.css">
     <!--My CSS link-->
+
 
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Montserrat&display=swap" rel="stylesheet">
     <!--font from Google, web font-->
@@ -36,16 +38,17 @@
         <a id="logo" href="index.html"><img src="images/MyLogo_final.png" alt="Logo"></a>
         <!-- this is where the logo will be placed.-->
 
-
-        <nav class="mainNav">
-            <!--main nav goes here-->
-            <a href="index.html" class="home current">Home</a>
-            <a href="" class="projects">Projects</a>
-            <a href="" class="resume">Resume</a>
-            <a href="" class="aboutMe">About Me</a>
-            <a href="" class="contact">Contact</a>
-            <!--come up with a mobile menu using javascript-->
-        </nav>
+        <div class="topNav">
+            <div id="menu" onclick="myFunction()">Menu <span id="close">X</span></div>
+            <nav class="mainNav" id="myLinks">
+                <!--main nav goes here-->
+                <a href="index.html" class="home current">Home</a>
+                <a href="" class="projects">Projects</a>
+                <a href="" class="resume">Resume</a>
+                <a href="" class="aboutMe">About Me</a>
+                <a href="" class="contact">Contact</a>
+            </nav>
+        </div>
 
         <!--Including a picture element for my home page
         <figure>
@@ -177,10 +180,10 @@
 
         <!--begin social media links-->
         <div class="socialMedia">
-        <a href="mailto:evbreyes92@gmail.com" class="email socialM"><img src="images/Gmail-logo.png" alt="email"></a>
-        <a href="https://www.linkedin.com/in/elmarreyes/" class="linkedin socialM"><img src="images/linkedin.png" alt="Linkedin"></a>
-        <a href="https://twitter.com/EVBReyes" class="twitter socialM"><img src="images/twitter.png" alt="twitter"></a>
-        <a href="https://www.instagram.com/rex_maris/" class="instagram socialM"><img src="images/IGLogo.png" alt="instagram"></a>
+            <a href="mailto:evbreyes92@gmail.com" class="email socialM"><img src="images/Gmail-logo.png" alt="email"></a>
+            <a href="https://www.linkedin.com/in/elmarreyes/" class="linkedin socialM"><img src="images/linkedin.png" alt="Linkedin"></a>
+            <a href="https://twitter.com/EVBReyes" class="twitter socialM"><img src="images/twitter.png" alt="twitter"></a>
+            <a href="https://www.instagram.com/rex_maris/" class="instagram socialM"><img src="images/IGLogo.png" alt="instagram"></a>
         </div>
         <!--end social media links-->
     </footer>
@@ -198,7 +201,17 @@
     </script>
 -->
 
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myLinks");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+        
+        
+    </script>
 
-</body>
-
-</html>
+</body></html>
