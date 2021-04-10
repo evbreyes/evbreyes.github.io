@@ -20,16 +20,16 @@ body {
 .c-container {
     padding-left: 0px;
     padding-right: 0px;
-}
-
-.carousel-inner {
-    max-height: 45vw;
     position: relative;
 }
 
+.carousel-item {
+    max-height: 600px;
+}
+
 .carousel-caption {
-    position: absolute;
-    bottom: 150px;
+/*     position: absolute;
+    bottom: 150px; */
     color: antiquewhite;
     font-weight: bold;
     background: rgba(0, 0, 0, 40%)
