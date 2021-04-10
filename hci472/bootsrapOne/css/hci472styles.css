@@ -1,0 +1,99 @@
+@charset "UTF-8";
+/*CSS Document for Bootstrap Tutorial One*/
+
+body {
+    background-color:antiquewhite;
+}
+
+.navbar-dark .navbar-brand {
+    color: antiquewhite;
+}
+
+.navbar-dark .navbar-nav .nav-link.active {
+    color: antiquewhite;
+}
+
+.bg-dark {
+    background-color: #450920 !important;
+}
+
+.c-container {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.carousel-inner {
+    max-height: 45vw;
+    position: relative;
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 150px;
+    color: antiquewhite;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 40%)
+}
+
+.text-container {
+    max-width: 1000px;
+}
+
+.front-page-text {
+    padding-top: 20px;
+}
+
+footer {
+    background-color: #450920;
+    height: 60px;
+    color: antiquewhite;
+    font-size: 0.8rem;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.control-width {
+    max-width: 1200px;
+}
+
+.intro {
+    padding-top: 1em;
+    padding-bottom: 0.5em;
+}
+
+.card-container {
+    padding-bottom: 20px;
+
+}
+
+.card-footer-cy {
+    height: 60px;
+}
+
+.btn-primary {
+    background-color: transparent;
+    color: #450920;
+    border-color: #da627d;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #450920;
+    border-color: #450920;
+}
+
+.btn-primary:focus {
+    color: #fff;
+    background-color: #450920;
+    border-color: #f9dbbd;
+    box-shadow: 0 0 0 0.25rem rgb(165 56 96 / 50%);
+}
+
+.modal-content {
+    text-align: left;
+}
+
+#stJude {
+    max-width: 85%;
+    padding-bottom: 20px;
+}
