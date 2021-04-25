@@ -104,6 +104,10 @@ a:hover {
     padding-bottom: 5rem;
 }
 
+.divp {
+    padding-bottom: 1em;
+}
+
 footer {
     background: #735D78;
     color: whitesmoke;
