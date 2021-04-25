@@ -1,0 +1,173 @@
+@charset "UTF-8";
+
+* {
+    box-sizing: border-box;
+}
+
+body{
+    background: #f7d1cd;
+    font-family: 'Montserrat', sans-serif, serif;
+}
+
+.navbar {
+    background-color: #735D78;
+}
+
+.navbar-dark .navbar-brand {
+    color: whitesmoke;
+}
+
+.navbar-dark .navbar-nav .nav-link.active {
+    color: #f7d1cd;
+}
+
+/* Font sizes for modular scale Major Third */
+h1 { 
+    font-size: 3.052rem;
+    font-weight: 700;
+    font-style: normal;
+}
+
+h2 {
+    font-size: 2.441rem;
+    font-weight: 500;
+    font-style: normal;
+}
+
+h3 {
+    font-size: 1.953rem;
+    font-weight: 500;
+    font-style: normal;
+}
+
+h4 {
+    font-size: 1.563rem;
+    font-weight: 500;
+    font-style: normal;
+}
+
+h5 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    font-style: normal;
+}
+
+small { 
+    font-size: 0.8rem;
+}
+
+em {
+    font-style: italic;
+    font-weight: 500;
+}
+/* End font size scale */
+
+/* Link styles */
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #735d78;
+    text-decoration: underline;
+}
+ /* end link styles */
+
+/* home page content */
+.homeContainer {
+    padding: 2.5em;
+    margin: 1.5em auto 0 auto;
+    background-color: snow;
+    border-radius: 0.5em;
+}
+
+.homeContainer h1 {
+    text-align: center;
+    font-weight: 700;
+}
+.homeContainer h2 {
+    padding-bottom: 1.5em;
+    text-align: center;
+}
+
+.homeContainer h3 {
+    border-bottom: solid 0.5px #735d78;
+    padding-bottom: 0.25em;
+}
+
+#pageWrap {
+    position: relative;
+    min-height: 100vh;
+}
+
+#contentWrap {
+    padding-bottom: 5rem;
+}
+
+footer {
+    background: #735D78;
+    color: whitesmoke;
+    height: 4rem;
+    margin-top: 1em;
+    display: flex; /* to help center text */
+    align-content: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    align-items: center;
+}
+
+/* Hierarchy pages */
+section.container {
+    margin-top: 2em;
+    padding-bottom: 2em;
+}
+
+p {
+    padding:0;
+    margin:0;
+}
+
+.hierarchyWrap {
+    background-color: whitesmoke;
+    border-radius: 0.5em;
+    padding: 0 2em;
+}
+
+code {
+    display: flex;
+    flex-flow: column;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.pText {
+    padding-bottom: 0.5em;
+}
+
+.hierarchyRow {
+    border-bottom: solid 0.5px #735D78;
+    padding: 2em 0;
+}
+
+.hierarchyRow:last-child {
+    border-bottom: none;
+}
+
+/* Font families on pages */
+
+.montAlt {
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.lobster {
+    font-family: 'Lobster Two', cursive, serif;
+}
+
+.lato {
+    font-family: 'Lato', sans-serif;
+}
+
+.roboto {
+    font-family: 'Roboto Slab', serif;
+}
