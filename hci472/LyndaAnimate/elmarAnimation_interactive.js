@@ -3,26 +3,140 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"elmarAnimation_interactive_atlas_1", frames: [[935,722,466,693],[1403,702,466,693],[1282,0,466,700],[0,722,465,705],[467,722,466,699],[0,0,1280,720]]},
+		{name:"elmarAnimation_interactive_atlas_1", frames: [[802,494,397,66],[0,415,399,77],[401,415,399,77],[0,0,401,81],[403,0,401,81],[806,0,401,81],[1209,0,401,81],[1612,0,401,81],[802,415,399,77],[0,83,401,81],[403,83,401,81],[806,83,401,81],[1209,83,401,81],[1612,83,401,81],[1203,415,399,77],[0,166,401,81],[403,166,401,81],[806,166,401,81],[1209,166,401,81],[1612,166,401,81],[1604,415,399,77],[0,249,401,81],[403,249,401,81],[806,249,401,81],[1209,249,401,81],[1612,249,401,81],[0,494,399,77],[0,332,401,81],[403,332,401,81],[806,332,401,81],[1209,332,401,81],[1612,332,401,81],[401,494,399,77],[1201,494,275,60],[1478,494,275,60],[1755,494,275,60]]},
 		{name:"elmarAnimation_interactive_atlas_2", frames: [[936,0,466,688],[0,0,466,693],[468,0,466,693],[403,781,393,84],[1209,860,393,84],[1604,860,393,84],[798,862,393,84],[1404,0,401,84],[0,1469,401,81],[0,867,393,84],[395,867,393,84],[1193,946,393,84],[1588,946,393,84],[1404,86,401,84],[403,1469,401,81],[806,1548,401,81],[1209,1548,401,81],[790,948,393,84],[0,953,393,84],[1404,172,401,84],[1612,1548,401,81],[0,1552,401,81],[403,1552,401,81],[395,953,393,84],[1185,1032,393,84],[1580,1032,393,84],[790,1034,393,84],[1404,258,401,84],[806,1631,401,81],[1209,1631,401,81],[1612,1631,401,81],[0,1039,393,84],[395,1039,393,84],[1404,344,401,84],[0,1635,401,81],[403,1635,401,81],[806,1714,401,81],[1185,1118,393,84],[1580,1118,393,84],[790,1120,393,84],[0,1125,393,84],[1404,430,401,84],[1209,1714,401,81],[1612,1714,401,81],[0,1718,401,81],[395,1125,393,84],[1185,1204,393,84],[1404,516,401,84],[403,1718,401,81],[806,1797,401,81],[1209,1797,401,81],[1580,1204,393,84],[790,1206,393,84],[0,1211,393,84],[1404,602,401,84],[1612,1797,401,81],[0,1801,401,81],[403,1801,401,81],[395,1211,393,84],[1185,1290,393,84],[1404,688,401,84],[806,1880,401,81],[1209,1880,401,81],[1612,1880,401,81],[0,1884,401,81],[403,1884,401,81],[1580,1290,393,84],[790,1292,393,84],[936,690,401,84],[806,1963,401,81],[1209,1963,401,81],[1612,1963,401,81],[0,1967,401,81],[403,1967,401,81],[0,1297,393,84],[395,1297,393,84],[0,695,401,84],[1185,1376,393,84],[1580,1376,393,84],[403,695,401,84],[790,1378,393,84],[0,1383,393,84],[1339,774,401,84],[395,1383,393,84],[1185,1462,393,84],[806,776,401,84],[1580,1462,393,84],[0,781,401,84]]},
-		{name:"elmarAnimation_interactive_atlas_3", frames: [[802,494,397,66],[0,415,399,77],[401,415,399,77],[0,0,401,81],[403,0,401,81],[806,0,401,81],[1209,0,401,81],[1612,0,401,81],[802,415,399,77],[0,83,401,81],[403,83,401,81],[806,83,401,81],[1209,83,401,81],[1612,83,401,81],[1203,415,399,77],[0,166,401,81],[403,166,401,81],[806,166,401,81],[1209,166,401,81],[1612,166,401,81],[1604,415,399,77],[0,249,401,81],[403,249,401,81],[806,249,401,81],[1209,249,401,81],[1612,249,401,81],[0,494,399,77],[0,332,401,81],[403,332,401,81],[806,332,401,81],[1209,332,401,81],[1612,332,401,81],[401,494,399,77],[1201,494,275,60],[1478,494,275,60],[1755,494,275,60]]}
+		{name:"elmarAnimation_interactive_atlas_3", frames: [[935,722,466,693],[1403,702,466,693],[1282,0,466,700],[0,722,465,705],[467,722,466,699],[0,0,1280,720]]}
 ];
 
 
 (lib.AnMovieClip = function(){
 	this.actionFrames = [];
 	this.ignorePause = false;
+	this.currentSoundStreamInMovieclip;
+	this.soundStreamDuration = new Map();
+	this.streamSoundSymbolsList = [];
+
+	this.gotoAndPlayForStreamSoundSync = function(positionOrLabel){
+		cjs.MovieClip.prototype.gotoAndPlay.call(this,positionOrLabel);
+	}
 	this.gotoAndPlay = function(positionOrLabel){
+		this.clearAllSoundStreams();
+		var pos = this.timeline.resolve(positionOrLabel);
+		if (pos != null) { this.startStreamSoundsForTargetedFrame(pos); }
 		cjs.MovieClip.prototype.gotoAndPlay.call(this,positionOrLabel);
 	}
 	this.play = function(){
+		this.clearAllSoundStreams();
+		this.startStreamSoundsForTargetedFrame(this.currentFrame);
 		cjs.MovieClip.prototype.play.call(this);
 	}
 	this.gotoAndStop = function(positionOrLabel){
 		cjs.MovieClip.prototype.gotoAndStop.call(this,positionOrLabel);
+		this.clearAllSoundStreams();
 	}
 	this.stop = function(){
 		cjs.MovieClip.prototype.stop.call(this);
+		this.clearAllSoundStreams();
+	}
+	this.startStreamSoundsForTargetedFrame = function(targetFrame){
+		for(var index=0; index<this.streamSoundSymbolsList.length; index++){
+			if(index <= targetFrame && this.streamSoundSymbolsList[index] != undefined){
+				for(var i=0; i<this.streamSoundSymbolsList[index].length; i++){
+					var sound = this.streamSoundSymbolsList[index][i];
+					if(sound.endFrame > targetFrame){
+						var targetPosition = Math.abs((((targetFrame - sound.startFrame)/lib.properties.fps) * 1000));
+						var instance = playSound(sound.id);
+						var remainingLoop = 0;
+						if(sound.offset){
+							targetPosition = targetPosition + sound.offset;
+						}
+						else if(sound.loop > 1){
+							var loop = targetPosition /instance.duration;
+							remainingLoop = Math.floor(sound.loop - loop);
+							if(targetPosition == 0){ remainingLoop -= 1; }
+							targetPosition = targetPosition % instance.duration;
+						}
+						instance.loop = remainingLoop;
+						instance.position = Math.round(targetPosition);
+						this.InsertIntoSoundStreamData(instance, sound.startFrame, sound.endFrame, sound.loop , sound.offset);
+					}
+				}
+			}
+		}
+	}
+	this.InsertIntoSoundStreamData = function(soundInstance, startIndex, endIndex, loopValue, offsetValue){ 
+ 		this.soundStreamDuration.set({instance:soundInstance}, {start: startIndex, end:endIndex, loop:loopValue, offset:offsetValue});
+	}
+	this.clearAllSoundStreams = function(){
+		this.soundStreamDuration.forEach(function(value,key){
+			key.instance.stop();
+		});
+ 		this.soundStreamDuration.clear();
+		this.currentSoundStreamInMovieclip = undefined;
+	}
+	this.stopSoundStreams = function(currentFrame){
+		if(this.soundStreamDuration.size > 0){
+			var _this = this;
+			this.soundStreamDuration.forEach(function(value,key,arr){
+				if((value.end) == currentFrame){
+					key.instance.stop();
+					if(_this.currentSoundStreamInMovieclip == key) { _this.currentSoundStreamInMovieclip = undefined; }
+					arr.delete(key);
+				}
+			});
+		}
+	}
+
+	this.computeCurrentSoundStreamInstance = function(currentFrame){
+		if(this.currentSoundStreamInMovieclip == undefined){
+			var _this = this;
+			if(this.soundStreamDuration.size > 0){
+				var maxDuration = 0;
+				this.soundStreamDuration.forEach(function(value,key){
+					if(value.end > maxDuration){
+						maxDuration = value.end;
+						_this.currentSoundStreamInMovieclip = key;
+					}
+				});
+			}
+		}
+	}
+	this.getDesiredFrame = function(currentFrame, calculatedDesiredFrame){
+		for(var frameIndex in this.actionFrames){
+			if((frameIndex > currentFrame) && (frameIndex < calculatedDesiredFrame)){
+				return frameIndex;
+			}
+		}
+		return calculatedDesiredFrame;
+	}
+
+	this.syncStreamSounds = function(){
+		this.stopSoundStreams(this.currentFrame);
+		this.computeCurrentSoundStreamInstance(this.currentFrame);
+		if(this.currentSoundStreamInMovieclip != undefined){
+			var soundInstance = this.currentSoundStreamInMovieclip.instance;
+			if(soundInstance.position != 0){
+				var soundValue = this.soundStreamDuration.get(this.currentSoundStreamInMovieclip);
+				var soundPosition = (soundValue.offset?(soundInstance.position - soundValue.offset): soundInstance.position);
+				var calculatedDesiredFrame = (soundValue.start)+((soundPosition/1000) * lib.properties.fps);
+				if(soundValue.loop > 1){
+					calculatedDesiredFrame +=(((((soundValue.loop - soundInstance.loop -1)*soundInstance.duration)) / 1000) * lib.properties.fps);
+				}
+				calculatedDesiredFrame = Math.floor(calculatedDesiredFrame);
+				var deltaFrame = calculatedDesiredFrame - this.currentFrame;
+				if((deltaFrame >= 0) && this.ignorePause){
+					cjs.MovieClip.prototype.play.call(this);
+					this.ignorePause = false;
+				}
+				else if(deltaFrame >= 2){
+					this.gotoAndPlayForStreamSoundSync(this.getDesiredFrame(this.currentFrame,calculatedDesiredFrame));
+				}
+				else if(deltaFrame <= -2){
+					cjs.MovieClip.prototype.stop.call(this);
+					this.ignorePause = true;
+				}
+			}
+		}
 	}
 }).prototype = p = new cjs.MovieClip();
 // symbols:
@@ -30,7 +144,7 @@ lib.ssMetadata = [
 
 
 (lib.CachedBmp_128 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
@@ -44,7 +158,7 @@ lib.ssMetadata = [
 
 
 (lib.CachedBmp_126 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
 	this.gotoAndStop(1);
 }).prototype = p = new cjs.Sprite();
 
@@ -58,21 +172,21 @@ lib.ssMetadata = [
 
 
 (lib.CachedBmp_124 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
 	this.gotoAndStop(2);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CachedBmp_123 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
 	this.gotoAndStop(3);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CachedBmp_122 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
 	this.gotoAndStop(4);
 }).prototype = p = new cjs.Sprite();
 
@@ -98,7 +212,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,2412,394);
 
 
 (lib.CachedBmp_118 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
@@ -546,7 +660,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,2412,394);
 
 
 (lib.CachedBmp_54 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(1);
 }).prototype = p = new cjs.Sprite();
 
@@ -609,7 +723,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,2412,394);
 
 
 (lib.CachedBmp_45 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(2);
 }).prototype = p = new cjs.Sprite();
 
@@ -637,42 +751,42 @@ p.nominalBounds = new cjs.Rectangle(0,0,2412,394);
 
 
 (lib.CachedBmp_41 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(3);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CachedBmp_40 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(4);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CachedBmp_39 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(5);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CachedBmp_38 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(6);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CachedBmp_37 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(7);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CachedBmp_36 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(8);
 }).prototype = p = new cjs.Sprite();
 
@@ -700,42 +814,42 @@ p.nominalBounds = new cjs.Rectangle(0,0,2412,394);
 
 
 (lib.CachedBmp_32 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(9);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CachedBmp_31 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(10);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CachedBmp_30 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(11);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CachedBmp_29 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(12);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CachedBmp_28 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(13);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CachedBmp_27 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(14);
 }).prototype = p = new cjs.Sprite();
 
@@ -763,42 +877,42 @@ p.nominalBounds = new cjs.Rectangle(0,0,2412,394);
 
 
 (lib.CachedBmp_23 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(15);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CachedBmp_22 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(16);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CachedBmp_21 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(17);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CachedBmp_20 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(18);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CachedBmp_19 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(19);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CachedBmp_18 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(20);
 }).prototype = p = new cjs.Sprite();
 
@@ -826,42 +940,42 @@ p.nominalBounds = new cjs.Rectangle(0,0,2412,394);
 
 
 (lib.CachedBmp_14 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(21);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CachedBmp_13 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(22);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CachedBmp_12 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(23);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CachedBmp_11 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(24);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CachedBmp_10 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(25);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CachedBmp_9 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(26);
 }).prototype = p = new cjs.Sprite();
 
@@ -882,70 +996,70 @@ p.nominalBounds = new cjs.Rectangle(0,0,2412,394);
 
 
 (lib.CachedBmp_6 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(27);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CachedBmp_5 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(28);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CachedBmp_4 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(29);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CachedBmp_3 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(30);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CachedBmp_2 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(31);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CachedBmp_1 = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(32);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.Chrome = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
 	this.gotoAndStop(5);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.HoverButton = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(33);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.PressedButton = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(34);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.RestButton = function() {
-	this.initialize(ss["elmarAnimation_interactive_atlas_3"]);
+	this.initialize(ss["elmarAnimation_interactive_atlas_1"]);
 	this.gotoAndStop(35);
 }).prototype = p = new cjs.Sprite();
 
@@ -1966,6 +2080,17 @@ if (reversed == null) { reversed = false; }
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
 
+	// timeline functions:
+	this.frame_1 = function() {
+		playSound("hover");
+	}
+	this.frame_2 = function() {
+		playSound("press");
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).wait(1).call(this.frame_1).wait(1).call(this.frame_2).wait(2));
+
 	// Label
 	this.shape = new cjs.Shape();
 	this.shape.graphics.f("#CCCCCC").s().p("AvFCcQgmgJgXgPIAihNQAWANAcAIQAcAHAaAAQAWAAAJgEQAKgEAAgJQAAgKgNgEQgMgFgcgGQglgIgYgJQgYgIgSgTQgSgUAAgjQAAgdAQgZQARgYAhgOQAhgOAvAAQAhAAAfAHQAfAHAYAOIggBNQgugYgqAAQgpAAAAAUQAAAJANAFQAMAFAcAFQAkAHAYAJQAZAJASASQATAUAAAiQAAAegRAYQgRAYghAOQghAPgvAAQgnAAglgJgAM9CdIAAjnIhcAAIAAhTIEiAAIAABTIhcAAIAADngAHtCdIg1hPIgdAAIAABPIhqAAIAAk6ICYAAQArAAAhAPQAgAOARAbQASAbAAAkQAAAigPAYQgPAZgdAPIBCBhgAGbgBIAnAAQAWAAAKgKQALgJAAgSQAAgSgLgJQgKgKgWAAIgnAAgAA6CdIgVg3Ih3AAIgVA3IhsAAICKk6IBnAAICKE6gAg0AaIA8AAIgehOgAoLCdIAAjnIhcAAIAAhTIEjAAIAABTIhdAAIAADng");
@@ -2605,6 +2730,7 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	this.actionFrames = [0,1,119,147,249,299];
+	this.streamSoundSymbolsList[0] = [{id:"AcousticEchoes",startFrame:0,endFrame:299,loop:1,offset:0}];
 	this.___GetDepth___ = function(obj) {
 		var depth = obj.depth;
 		var cameraObj = this.___camera___instance;
@@ -2636,6 +2762,10 @@ if (reversed == null) { reversed = false; }
 
 	// timeline functions:
 	this.frame_0 = function() {
+		this.clearAllSoundStreams();
+		 
+		var soundInstance = playSound("AcousticEchoes",0);
+		this.InsertIntoSoundStreamData(soundInstance,0,299,1);
 		this.Start = this.ImageAssets_psd.Start;
 		var _this = this;
 		/*
@@ -2659,7 +2789,6 @@ if (reversed == null) { reversed = false; }
 	}
 	this.frame_1 = function() {
 		this.Start = undefined;
-		playSound("AnimalsAmbienceMonkeysInJungle");
 	}
 	this.frame_119 = function() {
 		this.mondayNights = this.Message.mondayNights;
@@ -3147,7 +3276,7 @@ lib.properties = {
 		{src:"images/elmarAnimation_interactive_atlas_1.png", id:"elmarAnimation_interactive_atlas_1"},
 		{src:"images/elmarAnimation_interactive_atlas_2.png", id:"elmarAnimation_interactive_atlas_2"},
 		{src:"images/elmarAnimation_interactive_atlas_3.png", id:"elmarAnimation_interactive_atlas_3"},
-		{src:"sounds/AnimalsAmbienceMonkeysInJungle.mp3", id:"AnimalsAmbienceMonkeysInJungle"},
+		{src:"sounds/AcousticEchoes.mp3", id:"AcousticEchoes"},
 		{src:"sounds/hover.mp3", id:"hover"},
 		{src:"sounds/press.mp3", id:"press"}
 	],

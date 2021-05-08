@@ -60,6 +60,7 @@ function handleComplete(evt,comp) {
 		createjs.Ticker.framerate = lib.properties.fps;
 		createjs.Ticker.addEventListener("tick", stage);
 		stage.addEventListener("tick", stage._handleTick);
+		createjs.Ticker.addEventListener("tick", AdobeAn.handleSoundStreamOnTick);
 	}	    
 	//Code to support hidpi screens and responsive scaling.
 	AdobeAn.makeResponsive(true,'both',false,1,[canvas,anim_container,dom_overlay_container]);	
