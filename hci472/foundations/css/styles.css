@@ -1,0 +1,235 @@
+@charset "UTF-8";
+
+/* Color palette:
+darkest: #330F4C
+#441466
+#8A8AB2
+#BDC9F2
+lightest: #F7EDF7 */
+
+* {
+    box-sizing: border-box;
+}
+
+body{
+    background: snow;
+    font-family: 'Montserrat', sans-serif, serif;
+}
+
+.navbar {
+    background-color: #BDC9F2;
+}
+
+.navbar-light .navbar-nav {
+    color: rgba(0,0,0,0.95);
+}
+
+.navbar-light .navbar-nav .nav-link.active {
+    color: #441466;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+/* Font sizes for modular scale Major Third */
+h1 { 
+    font-size: 3.052rem;
+    font-weight: 700;
+    font-style: normal;
+}
+
+h2 {
+    font-size: 2.441rem;
+    font-weight: 500;
+    font-style: normal;
+}
+
+h3 {
+    font-size: 1.953rem;
+    font-weight: 500;
+    font-style: normal;
+}
+
+h4 {
+    font-size: 1.563rem;
+    font-weight: 500;
+    font-style: normal;
+}
+
+h5 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    font-style: normal;
+}
+
+small { 
+    font-size: 0.8rem;
+}
+
+em {
+    font-style: italic;
+    font-weight: 500;
+}
+/* End font size scale */
+
+/* Link styles */
+a {
+    text-decoration: none;
+    color: blueviolet;
+}
+
+a:hover {
+    color: #441466;
+    text-decoration: underline;
+}
+ /* end link styles */
+
+/* home page content */
+.homeContainer {
+    padding: 2.5em;
+    padding-bottom: 1.5em;
+    margin: 1.5em auto 0 auto;
+    background-color: snow;
+    border-radius: 0.5em;
+}
+
+.homeContainer h1 {
+    text-align: center;
+    font-weight: 700;
+}
+.homeContainer h2 {
+    padding-bottom: 1.5em;
+    text-align: center;
+}
+
+.homeContainer h3 {
+    border-bottom: solid 0.5px #441466;
+    padding-bottom: 0.25em;
+}
+
+#pageWrap {
+    position: relative;
+    min-height: 100vh;
+}
+
+#contentWrap {
+    padding-bottom: 5rem;
+}
+
+.divp {
+    padding-bottom: 1em;
+}
+
+footer {
+    background: #BDC9F2;
+    color: #330F4C;
+    height: 4rem;
+    margin-top: 1em;
+    display: flex; /* to help center text */
+    align-content: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    align-items: center;
+}
+
+/* Hierarchy pages */
+section.container {
+    margin-top: 2em;
+    padding-bottom: 2em;
+}
+
+p {
+    padding:0;
+    margin:0;
+}
+
+.hierarchyWrap {
+    background-color: #F7EDF7;
+    border-radius: 0.5em;
+    padding: 0 2em;
+}
+
+code {
+    display: flex;
+    flex-flow: column;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.pText {
+    padding-bottom: 0.5em;
+}
+
+.hierarchyRow {
+    border-bottom: solid 0.5px #441466;
+    padding: 2em 0;
+}
+
+.hierarchyRow:last-child {
+    border-bottom: none;
+}
+
+/* Font families on pages */
+
+.montAlt {
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.lobster {
+    font-family: 'Lobster Two', cursive, serif;
+}
+
+.lato {
+    font-family: 'Lato', sans-serif;
+}
+
+.roboto {
+    font-family: 'Roboto Slab', serif;
+}
+
+/* Logo page */
+.logoContainer {
+    background: #F7EDF7;
+    padding: 0 2em;
+    border-radius: 0.5em;
+}
+
+.logoWrap p {
+    margin-bottom: 1.5em;
+}
+
+#logo {
+    width: 7.5em;
+}
+
+div.logo {
+    width: 100%;
+}
+
+.logo img, .favicon img {
+    max-width: 100%;
+    background: snow;
+    border-radius: 0.5em;
+}
+
+.logoWrap {
+    border-bottom: solid 0.5px #441466;
+    padding: 2em 0;
+}
+
+.logoWrap:last-child {
+    border-bottom: none;
+}
+
+.favicon {
+    width: 3em;
+}
+
+.favWrap {
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: center;
+    align-items: center;
+    background: snow;
+    padding: 1.5em 0;
+}
