@@ -115,6 +115,10 @@ a.btn:focus, #introBtn:focus {
     position: relative;
 }
 
+main {
+    overflow: hidden;
+}
+
 div #homePhoto, figure #introPhoto {
 width: 100%;
 border-radius: 20px;
@@ -237,6 +241,7 @@ section.bgBeige{
     mix-blend-mode: multiply;
     bottom:0.5rem;
     right:-15%;
+    overflow: hidden;
 }
 
 #bubbles img {
@@ -248,6 +253,7 @@ section.bgBeige{
 #introBubblesLeft, #introBubblesRight {
     position: absolute;
     z-index: -1;
+    overflow: hidden;
 }
 
 #bubblesLeft, 
@@ -255,6 +261,7 @@ section.bgBeige{
 #introBubblesLeft {
     bottom: 1em;
     left: -25%;
+    overflow: hidden;
 }
 
 #bubblesRight, 
@@ -262,6 +269,7 @@ section.bgBeige{
 #introBubblesRight {
     right: -20%;
     top: 10%;
+    overflow-x: hidden;
 }
 
 ul.courseList {
@@ -321,7 +329,6 @@ ul.courseList {
 .petPhotoWrapper p {
     padding: 0.5em 0;
 }
-
 
 
 
