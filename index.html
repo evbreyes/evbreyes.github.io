@@ -1,241 +1,86 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+<!--required head-->
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="author" content="Elmar Reyes">
-  <!-- Favicon -->
-  <link rel="icon" href="images/logos/favicon.png">
+    <meta charset="UTF-8">
+    <meta name="author" content="Elmar Reyes">
+    <!--This identifies the page author, Elmar Reyes-->
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <meta name="robots" content="noindex, nofollow">
+    <!--this prevents the page from being searched online-->
 
-  <!-- My CSS File -->
-  <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--this is the viewport meta to control viewport scaling-->
 
-  <!-- Google Fonts-->
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet">
-  <!-- Montserrat typeface from Google Fonts -->
+    <link rel="icon" href="favicon.png">
+    <!--Favicon, if any.-->
 
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
-  <!-- Roboto Slab typeface from Google Fonts -->
+    <title>Elmar Reyes | Error 404</title>
+    <!--site title-->
 
-  <title>Elmar Reyes | UX Professional</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <!--This links the page to the reset.css file-->
+
+
+    <link rel="stylesheet" type="text/css" href="css/home.css">
+    <!--My CSS link-->
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Montserrat&display=swap" rel="stylesheet">
+    <!--font from Google, web font-->
+    
+    <style>
+        
+        html {
+            background-color: azure;
+        }
+        
+        body {
+            margin-top: 4em;
+        }
+        
+        h1 {
+            font-size: 4em;
+            text-align: center;
+            padding-bottom: 0.5em;
+        }
+        
+        h2{
+            font-size: 2em;
+            text-align: center;
+            padding-bottom: 1em;
+        }
+        
+        p {
+            font-size: 1.5em;
+            text-align: center;
+            padding-bottom: 1.5em;
+        }
+        
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 70vw;
+        }
+
+        a:hover {
+            color:darkmagenta;
+            font-weight: 600;
+        }
+    
+    </style>
 </head>
 
-<body id="homeBody">
-  <div id="pageWrap">
-    <div id="contentWrap">
-      <header class="sticky-top">
-        <!-- Navigation start -->
-        <nav class="navbar navbar-expand-lg navbar-light sticky-top">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="images/logos/headingLogo.png" alt="Elmar Reyes Logo"
-                id="logo"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-              aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav">
-                <!-- HOME -->
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <!-- Projects -->
-                <li class="nav-item">
-                  <a class="nav-link" href="error/error.html">Projects</a>
-                </li>
-                <!-- About Me -->
-                <li class="nav-item">
-                  <a class="nav-link" href="about me/aboutMe.html">About Me!</a>
-                </li>
-                <!-- Contact -->
-                <li class="nav-item">
-                  <a class="nav-link" href="error/error.html">Contact</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </header>
-      <!-- End Nav -->
-
-      <!-- main information -->
-      <main>
-
-        <div class="container homeContainer">
-          <div class="row">
-
-            <!-- Image -->
-            <div class="col-xl-6 col-lg-4 col-md-9 col-sm-12 homePhoto">
-              <img src="images/garden.jpg" alt="A photo from a botanical garden in Austin, TX." id="homePhoto">
-            </div>
-
-            <div class="col-xl-6 col-lg-8 col-md-12 divp">
-              <!-- Title -->
-              <h1>Greetings, I'm Elmar!</h1>
-              <h2>User Experience Designer</h2>
-
-              <!-- Introduction text -->
-              <p>I am a <em>User Experience Designer</em> studying Human-Computer Interaction at DePaul University in
-                Chicago. I have over 5 years experience practicing quantitative data analysis for chemical processes in
-                the
-                chemical and aerospace field. I enjoy empathizing and learning about the values, thoughts and ideas of
-                people.</p>
-
-              <p>Some skills I’ve recently picked up from my courses include, but not limited to, conducting user
-                interviews
-                and contextual inquiries, usability testing, persona creation, journey mapping, Information Architecture
-                and rapid prototyping.</p>
-
-              <a class="btn btn-primary" role="button" href="about me/aboutMe.html" id="introBtn">Learn more about me...!</a>
-            </div> <!-- close divp -->
-            <div>
-            <img id="bubblesRight" src="images/XDFiles/components/bubblesRight.png">
-            <img id="bubblesLeft" src="images/XDFiles/components/bubblesLeft.png">
-          </div>
-          </div> <!-- close row -->
-        </div> <!-- close container -->
-
-        <!-- begin project section -->
-        <section class="bg bgPurple">
-          <div class="container">
-            <div class="row">
-              <h3>Recent Projects</h3>
-              <!-- Begin cards -->
-              <div class="container cardContainer">
-                <div class="row">
-                  <figure class="cardImg col-lg-6">
-                    <img src="images/pholder.jpg" alt="Project photo">
-                  </figure>
-                  <section class="cardInfo col-lg-6">
-                    <h4>Virtual Vet Clinic App</h4>
-                    <h5>An app design for parents who struggle with vet visits</h5>
-                    <p>Course Project - DePaul University | 9/14/20 to 11/21/20</p>
-                    <p><em>My Virtual Vet Clinic</em> is a mobile application focused on pet medical health. There are
-                      many pet owners that face different struggles, such as making vet appointments, taking their pet
-                      to the clinic, or simply finding a vet that fulfills their needs. The My Virtual Vet Clinic app
-                      solves this problem by making pet care more accessible.</p>
-
-                    <p><small>Research, Interaction Design</small></p>
-                    <a class="btn btn-primary" role="button" href="#">~ Learn More ~</a>
-                  </section>
-                </div>
-              </div>
-
-              <div class="container cardContainer">
-                <div class="row">
-                  <figure class="cardImg col-lg-6 order-second order-lg-last">
-                    <img src="images/pholder.jpg" alt="Project photo">
-                  </figure>
-                  <section class="cardInfo col-lg-6">
-                    <h4>Virtual Vet Clinic App</h4>
-                    <h5>An app design for parents who struggle with vet visits</h5>
-                    <p>Course Project - DePaul University | 9/14/20 to 11/21/20</p>
-                    <p><em>My Virtual Vet Clinic</em> is a mobile application focused on pet medical health. There are
-                      many pet owners that face different struggles, such as making vet appointments, taking their pet
-                      to the clinic, or simply finding a vet that fulfills their needs. The My Virtual Vet Clinic app
-                      solves this problem by making pet care more accessible.</p>
-
-                    <p><small>Research, Interaction Design</small></p>
-                    <a class="btn btn-primary" role="button" href="#">~ Learn More ~</a>
-                  </section>
-                </div>
-              </div>
-
-              <div class="container cardContainer">
-                <div class="row">
-                  <figure class="cardImg col-lg-6">
-                    <img src="images/pholder.jpg" alt="Project photo">
-                  </figure>
-                  <section class="cardInfo col-lg-6">
-                    <h4>Virtual Vet Clinic App</h4>
-                    <h5>An app design for parents who struggle with vet visits</h5>
-                    <p>Course Project - DePaul University | 9/14/20 to 11/21/20</p>
-                    <p><em>My Virtual Vet Clinic</em> is a mobile application focused on pet medical health. There are
-                      many pet owners that face different struggles, such as making vet appointments, taking their pet
-                      to the clinic, or simply finding a vet that fulfills their needs. The My Virtual Vet Clinic app
-                      solves this problem by making pet care more accessible.</p>
-
-                    <p><small>Research, Interaction Design</small></p>
-                    <a class="btn btn-primary" role="button" href="#">~ Learn More ~</a>
-                  </section>
-                </div> <!-- end row -->
-              </div> <!-- end container -->
-
-            </div><!-- end row -->
-          </div> <!-- end container -->
-        </section> <!-- end project section -->
-
-        <section class="bg bgBeige">
-          <div class="container">
-            <h3>Let's Connect!</h3>
-            <div class="row beigeRow">
-              <div class="col-lg-6 divp">
-                <P>I am currently looking to make meaningful connections with members of the UX community. I deeply
-                  enjoy listening to everyone’s journey into the User Experience field, since each person has their own
-                  story to tell. I am also looking to join a team that is passionate about advocating for their users.
-                </P>
-                <p>Connect with me now on LinkedIn: <a
-                    href="www.linkedin.com/in/elmarreyes">www.linkedin.com/in/elmarreyes</a></p>
-              </div>
-              <div class="col-sm-10 col-lg-6 connectImg mx-auto d-block">
-                <img src="images/selfPhoto.jpg" alt="selfie photo of me in nature">
-              </div>
-              <div id="bubbles">
-                <img src="images/XDFiles/components/bubbles.png">
-              </div>
-            </div>
-          </div>
-
-        </section>
+<body>
+    <h1>Hello.</h1>
+    <h2>You must be lost.</h2>
+    <p>You bumped into Captain Space unicorn and his trusty steed on their way to the Gargantuan galaxy.</p>
+    <p><a role="button" href="portfolio/index.html">Go Home</a></p>
+    
+    <img src="portfolio/images/space unicorn.png" alt="Space Unicorn and his trusty steed">
+    
 
 
-      </main> <!-- end main -->
-
-    </div> <!-- end content wrap -->
-
-    <!-- start footer -->
-    <footer>
-      <div class="container container-fluid">
-        <div class="row footerRow">
-          <div class="logoContain col-xs-12 col-md-3 col-lg-2"><img src="images/logos/colored.png" alt="ER Logo"
-              class="footerLogo"></div>
-          <div class="col-md-9 col-xs-12">
-            <div class="col-12 footerText">
-              <p>&copy; Elmar Reyes 2021 | From Elmar with Love!</p>
-            </div>
-            <div class="col-12 socialMedia">
-              <div class="container col-lg-9 col-md-12">
-                <div class="row">
-                  <span class="col-md-3 col-xs-12"><a href="https://www.linkedin.com/in/elmarreyes/">Linkedin</a></span>
-                  <span class="col-md-3 col-xs-12"><a href="https://twitter.com/EVBReyes">Twitter</a></span>
-                  <span class="col-md-3 col-xs-12"><a href="https://www.instagram.com/rex_maris/">Instagram</a></span>
-                  <span class="col-md-3 col-xs-12"><a href="mailto: evbreyes92@gmail.com">email</a></span>
-                </div> <!-- end row -->
-              </div> <!-- end container -->
-            </div> <!-- end socialMedia -->
-          </div>
-        </div><!-- end footerRow -->
-      </div><!-- end container -->
-    </footer> <!-- end footer -->
-
-  </div> <!-- close page wrap -->
-
-  <!-- JavaScript for bootstrap -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
-  </script>
-</body>
-
-</html>
+</body></html>
