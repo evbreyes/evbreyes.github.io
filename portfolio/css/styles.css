@@ -241,7 +241,6 @@ section.bgBeige{
     mix-blend-mode: multiply;
     bottom:0.5rem;
     right:-15%;
-    overflow: hidden;
 }
 
 #bubbles img {
@@ -253,7 +252,6 @@ section.bgBeige{
 #introBubblesLeft, #introBubblesRight {
     position: absolute;
     z-index: -1;
-    overflow: hidden;
 }
 
 #bubblesLeft, 
@@ -261,7 +259,6 @@ section.bgBeige{
 #introBubblesLeft {
     bottom: 1em;
     left: -25%;
-    overflow: hidden;
 }
 
 #bubblesRight, 
@@ -269,7 +266,6 @@ section.bgBeige{
 #introBubblesRight {
     right: -20%;
     top: 10%;
-    overflow-x: hidden;
 }
 
 ul.courseList {
