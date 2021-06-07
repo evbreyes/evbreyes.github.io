@@ -1,0 +1,373 @@
+@charset "UTF-8";
+
+* {
+    box-sizing: border-box;
+}
+
+body{
+    background: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Roboto Slab', serif;
+}
+
+.navbar {
+    background-color: rgba(211,185,223,0.97);
+}
+
+.navbar-light .navbar-nav {
+    color: #100C08;
+    font-weight: 500;
+}
+
+.navbar-light .navbar-nav .nav-link.active {
+    color: #501469;
+    font-weight: 700;
+    text-decoration:underline;
+}
+
+/* Font sizes for modular scale Major Third */
+h1 { 
+    font-size: 3.052rem;
+    font-weight: 700;
+    font-style: normal;
+}
+
+h2 {
+    font-size: 2.441rem;
+    font-weight: 500;
+    font-style: normal;
+}
+
+h3 {
+    font-size: 1.953rem;
+    font-weight: 500;
+    font-style: normal;
+}
+
+h4 {
+    font-size: 1.563rem;
+    font-weight: 500;
+    font-style: normal;
+}
+
+h5 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    font-style: normal;
+}
+
+small { 
+    font-size: 0.8rem;
+}
+
+em {
+    font-style: italic;
+    font-weight: 500;
+}
+/* End font size scale */
+
+/* Link styles */
+a {
+    text-decoration: none;
+    color: #501469;
+    font-weight: 500;
+}
+
+a:hover {
+    color: #360F49;
+    text-decoration: underline;
+}
+
+a.btn {
+    background-color: #D3B9DF;
+    color:#501469;
+    padding: 0.5em 2em;
+    border-radius: 2rem;
+    border: none;
+    box-shadow: #360F49 0.125em 0.125em 0.25em;
+}
+
+#introBtn {
+    background-color: #F2EEDC;
+    border: 2px #501469 solid;
+    color:#360F49;
+    margin-top: 1.5rem;
+}
+
+a.btn:hover, #introBtn:hover {
+    background-color: #360F49;
+    color: #F2EEDC;
+    text-decoration: none;
+}
+
+a.btn:focus, #introBtn:focus {
+    background-color: #501469;
+    color:#D3B9DF;
+    box-shadow: inset #360F49 0.25em 0.25em 0.25em;
+}
+ /* end link styles */
+
+.homeContainer, .aboutContainer {
+    padding: 15px 0 90px 0;
+    position: relative;
+}
+
+div #homePhoto, figure #introPhoto {
+width: 100%;
+border-radius: 20px;
+margin: 1em auto;
+height: 90%;
+overflow: hidden;
+object-fit:cover;
+}
+
+.homePhoto {
+    text-align: center;
+}
+
+.divp {
+    padding: 1.5em;
+    text-align: left;
+    align-self: center;
+}
+
+#pageWrap {
+    position: relative;
+    min-height: 100%;
+}
+
+#contentWrap {
+    min-height: calc(100vh - 200px);
+}
+
+/* Projects section */
+.bgPurple {
+    background-color: #360F49;
+    color:#F2EEDC;
+}
+
+section.bg {
+    padding: 90px 0;
+}
+
+section.cardInfo {
+    color:#100C08;
+    padding: 35px 2.5em;
+    align-self: center;
+}
+
+.container h3 {
+    text-align: center;
+    padding-bottom: 45px;
+}
+
+.aboutContainer h3 {
+    padding-bottom: 15px;
+}
+
+.aboutContainer h1, .aboutContainer h2 {
+    text-align: center;
+}
+
+.aboutContainer {
+    padding-right: 1.5em;
+    padding-left: 1.5em;
+}
+
+.cardContainer {
+    background-color: #F2EEDC;
+    width: 100%;
+    border-radius: 2rem;
+    margin:45px 0;
+    padding:0;
+}
+
+.cardContainer:last-child {
+    margin-bottom: 0;
+}
+
+section.cardInfo .btn {
+    justify-content: right;
+}
+
+figure.cardImg img {
+    border-radius: 2rem;
+    width: 100%;
+    height:100%;
+    padding:0;
+    margin:0;
+    overflow: hidden;
+    object-fit:cover; 
+}
+
+figure {
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+/* end project section */
+
+section.bgBeige{
+    background-color: #F2EEDC;
+    color: #100C08;
+}
+
+.beigeRow, .circleWrapper, .timeRow, .furFam, .aboutContainer {
+    position: relative;
+}
+
+.connectImg img {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    object-fit: cover;
+    position: relative;
+}
+
+#bubbles {
+    height: 30vh;
+    width: 30vw;
+    position: absolute;
+    mix-blend-mode: multiply;
+    bottom:0.5rem;
+    right:-15%;
+}
+
+#bubbles img {
+    width: 100%;
+}
+
+#bubblesLeft, #bubblesRight, 
+#furBubblesLeft, #furBubblesRight,
+#introBubblesLeft, #introBubblesRight {
+    position: absolute;
+    z-index: -1;
+}
+
+#bubblesLeft, 
+#furBubblesLeft,
+#introBubblesLeft {
+    bottom: 1em;
+    left: -25%;
+}
+
+#bubblesRight, 
+#furBubblesRight, 
+#introBubblesRight {
+    right: -20%;
+    top: 10%;
+}
+
+ul.courseList {
+    margin-bottom: 0;
+}
+
+.courseList Li {
+    padding: 1em 2em 0 2em;
+    padding-bottom: 0;
+}
+
+
+.circle {
+    width: 100%;
+    padding: 50% 0;
+    text-align: center;
+    line-height: 0;
+    border-radius: 50%;
+}
+
+.vl {
+    background-color: #360F49;
+    width: 2.5px;
+    height: 20px;
+    position: absolute;
+    left: 50%;
+    top:-10px;
+}
+
+.hl {
+    background-color: #360F49;
+    height: 2px;
+    width:100%;
+    position: absolute;
+    top: -10px;
+    right: 0;
+}
+
+.timeList {
+    padding: 10px 20px 0 45px;
+    align-self: center;
+}
+
+.timeRow {
+    margin-bottom: 2.5rem;
+}
+.petPhoto {
+    width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.petPhotoWrapper {
+    padding-top: 45px;
+}
+
+.petPhotoWrapper p {
+    padding: 0.5em 0;
+}
+
+
+
+
+/* Footer */
+footer {
+    background: #D3B9DF;
+    color: #100C08;
+    display: flex; /* to help center text */
+    align-content: center;
+    justify-content: center;
+    position: relative;
+    bottom: 0;
+    padding: 1em 0 1.5em 0;
+    margin: 0 auto;
+    width: 100%;
+}
+
+div.logoContain {
+    flex: 0 1 auto;
+}
+
+
+.footerLogo {
+    width: 100%;
+}
+
+.footerText, .socialMedia {
+    text-align: center;
+    justify-content: center;
+    padding: 0.5em;
+}
+
+.footerRow {
+    display: flex;
+    align-items: center;
+}
+
+.socialMedia > row {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+#logo {
+    width: 7.5em;
+}
+
+/* End Homepage Content */
+
